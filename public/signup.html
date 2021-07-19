@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter</title>
+</head>
+<body>
+    <form class="container">
+        <label for="name">
+            Name: 
+            <input type="text"  id="name">
+        </label>
+        <label for="email">
+            Email: 
+            <input type="text"  id="email">
+        </label>
+        <label for="password">
+            Password: 
+            <input type="password"  id="password">
+        </label>
+        <label for="confirmPassword">
+            Confirm password: 
+            <input type="password"  id="confirmPassword">
+        </label>
+        <input type="submit" value="Submit!!!">
+    </form>
+</body>
+<script src="./signup.js"></script>
+<style>
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin: auto;
+        width: 400px;
+    }
+
+    label {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0px;
+    }
+
+    input[type="submit"] {
+        width: 100px;
+        margin: auto;
+        margin-top: 10px;
+    }
+</style>
+</html>
