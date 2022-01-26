@@ -1,6 +1,7 @@
 const db = require('../database/connection')
 const path = require('path')
 
+// fetch all tweets
 const get = (req, res) => {
     db.query(`
             SELECT users.name, tweets.tweet 
@@ -8,6 +9,7 @@ const get = (req, res) => {
             ON users.id = tweets.userid
         `)
         .then(({ rows }) => {
+            // [{ name: 'julian', tweet: 'asldnouashdiashdij' }]
             res.send(rows)
         })
         .catch((err) => {
@@ -19,6 +21,7 @@ const get = (req, res) => {
 const post = (req, res) => {
     console.log(req.body)
     console.log(req.user)
+
     db.query('SELECT id FROM users WHERE email = $1', [req.user.email])
         .then(({ rows }) => {
             const id = rows[0].id

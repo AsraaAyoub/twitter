@@ -12,8 +12,6 @@ app.use(cookieParser())
 
 
 
-app.get('/', checkAuth, (req, res, next) => next())
-
 app.use(express.static('public')) // app.get('/') -> index.html
 app.use(router)
 

@@ -10,7 +10,10 @@ const post = (req, res) => {
 
     db.query('SELECT * FROM users WHERE email= $1', [data.email])
         .then((queryResponse) => {
+            // if the rows are empty it means that the user is new
             if (!queryResponse.rows.length) {
+
+                // confirm password here
 
                 db.query(`INSERT INTO users (name, email, password) 
                 VALUES($1, $2, $3)`,

@@ -15,6 +15,7 @@ router.post('/signup', signupHandler.post)
 router.get('/tweets', checkAuth, tweetsHandler.get)
 router.get('/create-tweet', checkAuth, tweetsHandler.createTweet)
 router.post('/create-tweet', checkAuth, tweetsHandler.post)
+
 router.get('/logout', (req, res) => {
     res.clearCookie()
     res.redirect('/login')

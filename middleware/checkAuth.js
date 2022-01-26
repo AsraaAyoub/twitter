@@ -9,9 +9,17 @@ module.exports = (req, res, next) => {
         return;
     }
 
-    const user = jwt.verify(token, process.env.JWT_SECRET)
+    try {
 
-    req.user = user
+        const user = jwt.verify(token, process.env.JWT_SECRET)
 
-    next()
+        // user -> { email: 'julian@google.com }
+        req.user = user
+
+        next()
+    } catch (error) {
+        res.redirect('/login')
+    }
+
+
 }
