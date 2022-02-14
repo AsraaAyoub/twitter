@@ -5,13 +5,14 @@ const path = require("path")
 const get = (req, res) => {
   db.query(
     `
-            SELECT tweets.id, users.name, tweets.tweet 
+            SELECT tweets.id, comments.comment, users.name, tweets.tweet 
             FROM tweets INNER JOIN users
             ON users.id = tweets.userid
+            LEFT JOIN comments
+            ON comments.tweetid = tweets.id
         `
   )
     .then(({ rows }) => {
-      // [{ name: 'julian', tweet: 'asldnouashdiashdij' }]
       res.send(rows)
     })
     .catch((err) => {
@@ -51,9 +52,16 @@ const createTweet = (req, res) => {
 
 // TASK - Add a new comment to the tweet then redirect back to the main page
 const postComment = (req, res) => {
-  console.log(req.body)
-  console.log(req.params)
-  console.log(req.user)
+  db.query(
+    "INSERT INTO comments (comment, tweetid, userid) VALUES ($1, $2, $3)",
+    [req.body.comment, req.params.id, req.user.id]
+  )
+    .then(() => {
+      res.redirect("/")
+    })
+    .catch((err) => {
+      console.log(err)
+    })
 }
 
 module.exports = {

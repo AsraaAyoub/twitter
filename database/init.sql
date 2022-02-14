@@ -19,4 +19,12 @@ CREATE TABLE tweets (
 
 -- TASK: create a simple comments table
 
+CREATE TABLE comments (
+    id SERIAL PRIMARY KEY,
+    comment TEXT NOT NULL,
+    userId INTEGER REFERENCES users(id),
+    tweetId INTEGER REFERENCES tweets(id),
+    createdAt DATE NOT NULL DEFAULT CURRENT_DATE
+);
+
 COMMIT;
