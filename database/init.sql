@@ -17,4 +17,6 @@ CREATE TABLE tweets (
     createdAt DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
+-- TASK: create a simple comments table
+
 COMMIT;
